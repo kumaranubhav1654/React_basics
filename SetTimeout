@@ -1,0 +1,22 @@
+import "./styles.css";
+import { useState } from "react";
+
+export default function App() {
+  const [text, setText] = useState("");
+
+  async function handleChange(e) {
+    setText(e.target.value);
+    console.log(text);
+    setTimeout(() => {
+      const random = "Added";
+      setText(text + random);
+    }, 4000);
+  }
+  return (
+    <div className="App">
+      <label>Write ans wait for 4s:</label>
+      <input type="text" onChange={(e) => handleChange(e)} />
+      <p>{text}</p>
+    </div>
+  );
+}
