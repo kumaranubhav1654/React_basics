@@ -1,0 +1,50 @@
+//Throttle
+
+import { useState, useEffect } from 'react';
+import throttle from 'lodash.throttle';
+
+const ScrollListener = () => {
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  const handleScroll = throttle(() => {
+    const position = window.pageYOffset;
+    setScrollPosition(position);
+  }, 200); // Throttle time of 200ms
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  return <div>Scroll Position: {scrollPosition}</div>;
+};
+
+
+//Debounce
+
+import { useState, useEffect } from 'react';
+import debounce from 'lodash.debounce';
+
+const SearchBar = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleSearch = debounce((term) => {
+    // Perform search operation here
+    console.log('Searching for:', term);
+  }, 300); // Debounce time of 300ms
+
+  useEffect(() => {
+    handleSearch(searchTerm);
+  }, [searchTerm]);
+
+  return (
+    <input
+      type="text"
+      value={searchTerm}
+      onChange={(e) => setSearchTerm(e.target.value)}
+      placeholder="Search..."
+    />
+  );
+};
