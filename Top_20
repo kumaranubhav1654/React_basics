@@ -105,7 +105,21 @@ In the context of React, memoization is particularly important when dealing with
 React provides a built-in optimization called React.memo() that enables memoization for functional components. By wrapping a functional component with React.memo(), React will automatically check if the incoming props have changed since the last render. If the props are the same, the component will not re-render, and the cached result will be returned, reducing unnecessary re-renders.
 
 7. What is the purpose of the useEffect() hook in React and how does it work?
+
+=>The useEffect() hook in React is used to handle side effects in functional components. Side effects are any operations that affect the outside world, such as fetching data from an API, subscribing to events, updating the DOM, or setting up timers. In class components, side effects were typically handled in lifecycle methods like componentDidMount, componentDidUpdate, and componentWillUnmount. The useEffect() hook is the equivalent in functional components.
+
+The purpose of useEffect() is to perform side effects after a component renders. It allows you to execute code that should only be run after the component has been rendered to the screen. This helps ensure that the side effects do not interfere with the initial rendering and prevent any potential performance issues.
+
+The useEffect() hook takes two arguments: a function and an optional array of dependencies. The function represents the side effect you want to perform, and it will be executed after every render of the component. The optional array of dependencies allows you to control when the side effect runs.
+
+If the array of dependencies is empty ([]), the side effect will run only after the initial render. If there are dependencies specified in the array, the side effect will run after the initial render and whenever any of the dependencies change in subsequent renders. This is useful when you want the side effect to be triggered only when specific data changes.
+
 8. How does React handle routing and navigation?
+
+=>React itself does not include built-in routing and navigation features. Instead, it relies on third-party libraries or solutions to handle routing and navigation. Two popular libraries used for this purpose are:
+
+React Router: React Router is the most widely used library for handling routing in React applications. It provides a declarative way to define routes and components that should be rendered for different URLs. React Router allows you to set up nested routes, route parameters, and query parameters, among other features. It seamlessly integrates with React components and manages the rendering of components based on the current URL.
+
 9. How can you handle asynchronous operations in React using async/await?
 10. Explain the concept of the Context API in React and its benefits.
 
