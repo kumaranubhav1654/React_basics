@@ -1,6 +1,83 @@
 0. What is Lifting State Up in React?
 1. What is React context?
 2. What are different ways to add CSS in your app?
+1 - External Stylesheet
+You can create a new CSS file in your project directory and add your CSS inside it. It can then be imported into your React component or class. The following code is used to import an external CSS stylesheet.
+
+import "./styles.css";
+2 - Inline CSS
+Inline CSS is perhaps the most common and quick method to add styles in React. However, it has several drawbacks and is generally discouraged, especially for larger applications.
+
+To implement inline CSS, you can create an object containing style references, which can be then called using the style{} attribute. For example:
+
+const styles = {
+  section: {
+    fontSize: "18px",
+    color: "#292b2c",
+    backgroundColor: "#fff",
+    padding: "0 20px"
+  },
+  wrapper: {
+    textAlign: "center",
+    margin: "0 auto",
+    marginTop: "50px"
+  }
+}
+It is then added to an element like this:
+
+<section style={styles.section}>
+  <div style={styles.wrapper}>
+  </div>
+</section>
+3 - Styled Components
+Probably the most powerful and useful in my opinion is Styled Components. Styled Components lets you write actual CSS in your JavaScript. The main advantage is that you can add conditional code and use variables and functions within the CSS.
+
+You can install Styled Components using the following command:
+
+npm install --save styled-components
+Next, you need to import it into your component. Then you can create a new variable that will contain the CSS. The same variable name can be used to an HTML element with the previously added styles on it.
+
+import styled from 'styled-components'
+// Create a button variable and add CSS
+const Button = styled.button`
+  background: transparent;
+  border-radius: 3px;
+  border: 2px solid red;
+  color:red;
+`
+//display the HTML
+return (
+  <div>
+    <Button>Button</Button>
+  </div>
+);
+4 - CSS Modules
+You can also add scoped styles quite easily, you just need to create a file with the extension .module.css, like this:
+
+// ComponentName.module.css
+
+.Red {
+  color: #f00;
+}
+
+.Blue {
+  color: #00f;
+}
+Then you import it like this:
+
+import styles from "./ComponentName.module.css";
+and use it like this:
+
+<span className={styles.Red}>This text will be red</span>
+<span className={styles.Blue}>This text will be blue</span>
+5 - Atomic CSS
+One of the most popular atomic CSS frameworks out there is Tailwind, by just making it part of your project following their instructions you can just use classNames without even touching CSS.
+
+<button className="font-bold bg-blue-600 px-6 py-3 text-white rounded-md">Blue button</button>
+6 - Emotion
+Styled-components is not the only library that allows you to create components with styles embedded on them, you have great alternatives out there such as Emotion. The best thing about Emotion is that it's framework agnostic, so you can take your knowledge to other libraries and frameworks besides React, while being pretty similar to styled-components (so you can in several scenarios just change the import).
+
+
 3. What is Hot Module Replacement?
 4. What is the use of Parcel, Vite, Webpack?
 5. How does create-react-app work?
