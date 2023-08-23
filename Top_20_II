@@ -17,7 +17,25 @@ Example Scenario:
 Imagine you have a form with multiple input fields, and you want to display and update the form data in different parts of your application. Instead of managing the form data separately in each component that uses it, you can lift the form data state to a higher-level parent component. This parent component manages the form data and passes it down to the child components as props. When a user interacts with the form inputs, the child components notify the parent component to update the form data, which then triggers a re-render of the child components with the updated data.
 
 Lifting State Up is a fundamental principle in React's approach to managing state and building maintainable and scalable applications. It promotes better data flow, reusability, and consistency across components.
+
+
 1. What is React context?
+
+React Context is a feature in the React library that allows you to share state or data between components without the need to pass props through multiple levels of component hierarchy. It provides a way to share data that can be considered "global" for a tree of React components, eliminating the need to manually pass props down from parent to child components.
+
+With React Context, you can create a "context" object that holds the data you want to share. This context object can then be accessed by any component within its defined scope, regardless of how deeply nested that component is in the component tree.
+
+React Context is particularly useful for scenarios where you have data that many components need to access, such as user authentication status, themes, and localization settings. It simplifies the process of managing and sharing this kind of data, making your component code cleaner and more maintainable.
+
+Here's a basic example of how React Context works:
+
+Create a Context: You define a context using the React.createContext() function.
+
+Provide the Context: Wrap the components that need access to the context data within a <Context.Provider> component. This provides the data to those components.
+
+Consume the Context: Use the useContext hook (or the Context.Consumer component) to access the context data within your components.
+
+
 2. What are different ways to add CSS in your app?
 1 - External Stylesheet
 You can create a new CSS file in your project directory and add your CSS inside it. It can then be imported into your React component or class. The following code is used to import an external CSS stylesheet.
